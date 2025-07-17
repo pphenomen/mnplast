@@ -1,0 +1,1510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mnplast.ru</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="d-flex align-items-center justify-content-between px-3 py-2 position-sticky">
+    <div class="header-left d-flex align-items-center gap-2">
+      <img src="images/icon.png" alt="Логотип" style="height:36px" />
+      <img src="images/mnplast.png" alt="mnplast" style="height:36px" />
+    </div>
+
+    <button class="menu-toggle d-lg-none bg-transparent border-0" aria-label="Открыть/закрыть меню">
+      <i class="bi bi-list" style="font-size:32px"></i>
+    </button>
+
+    <nav class="header-center d-none d-lg-flex">
+      <ul class="d-flex gap-3 list-unstyled m-0">
+        <li><a href="#">Главная</a></li>
+        <li><a href="#catalog">Каталог</a></li>
+        <li><a href="contact.html">Контакты</a></li>
+        <li><a href="favorites.html">Избранное <span class="favCount badge bg-warning text-dark ms-1">0</span></a></li>
+        <li><a href="delivery_payment.html">Доставка и оплата</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-right d-none d-lg-flex gap-3">
+      <a href="https://wa.me/79380793030">
+        <i class="bi bi-whatsapp text-dark" style="font-size:24px"></i>
+      </a>
+      <a href="https://t.me/MNPLAST">
+        <i class="bi bi-telegram text-dark" style="font-size:24px"></i>
+      </a>
+    </div>
+
+    <div class="mobile-menu" aria-hidden="true">
+      <ul>
+        <li><a href="#">Главная</a></li>
+        <li><a href="#catalog">Каталог</a></li>
+        <li><a href="contact.html">Контакты</a></li>
+        <li><a href="favorites.html">Избранное <span class="favCount badge bg-warning text-dark ms-1">0</span></a></li>
+        <li><a href="delivery_payment.html">Доставка и оплата</a></li>
+      </ul>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="https://wa.me/79380793030">
+          <i class="bi bi-whatsapp text-dark" style="font-size:30px"></i>
+        </a>
+        <a href="https://t.me/1241241">
+          <i class="bi bi-telegram text-dark" style="font-size:30px"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Информация -->
+  <section class="bg-light py-5">
+    <div class="container d-md-flex align-items-center gap-5">
+      <div class="text">
+        <h1 class="display-5 fw-bold mb-3">Официальный сайт производственного предприятия "MNPLAST"</h1>
+        <p class="lead">Более 25 лет производственное предприятие «MNPLAST», базирующеся в городе Нальчик, обеспечивает рынок качественными и долговечными пластиковыми изделиями для дома и быта. Вся наша продукция безопасна и не содержит вредных веществ.</p>
+        <ul class="list-unstyled mb-4">
+          <li class="mb-1">Прозрачные условия и реальные сроки</li>
+          <li class="mb-1">Изготовление под ваши потребности</li>
+          <li class="mb-1">Доставка по всей России</li>
+        </ul>
+        <div class="text-center mt-4">
+          <a href="#request" class="btn btn-primary btn-lg px-4">Оставить заявку</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Каталог -->  
+  <section class="bg-light py-5" id="catalog">
+    <div class="container">
+      <h2 class="mb-4">Каталог продукции</h2>
+      <div class="mb-4 d-flex gap-3">
+      <select id="categorySelect" class="form-select w-auto">
+        <option value="all">Все категории</option>
+        <option value="household">Бытовые</option>
+        <option value="construction">Строительные</option>
+      </select>
+        <input type="text" id="searchInput" class="form-control" placeholder="Поиск по названию или артикулу...">
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col product-card" data-title="Таз Лотос" data-img='["images/001_002.jpg","images/001_002_up.jpg","images/001_002_down.jpg", "images/001_002_close.jpg", "images/001_002_purple.jpg","images/001_002_purple_up.jpg","images/001_002_purple_down.jpg", "images/001_002_purple_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade color-match visible">
+                <img src="images/001_002.jpg" img-color="бежевый" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/001_002_up.jpg" img-color="бежевый" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/001_002_down.jpg" img-color="бежевый" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/001_002_close.jpg" img-color="бежевый" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/001_002_purple.jpg" img-color="фиолетовый" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/001_002_purple_up.jpg" img-color="фиолетовый" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/001_002_purple_down.jpg" img-color="фиолетовый" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/001_002_purple_close.jpg" img-color="фиолетовый" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title fw-bold fs-4">Таз «Лотос»</h5>
+              <small class="text-muted sku"></small>
+              <small class="text-muted pack mb-2"></small>
+              <div class="product-options mb-3">
+                <div class="volume-options mb-2">
+                  <strong>Объём:</strong><br>
+                  <button class="btn btn-outline-primary btn-volume active" data-art="002" data-volume="8" data-pack="50" data-price="64">8л</button>
+                  <button class="btn btn-outline-primary btn-volume" data-art="001" data-volume="16" data-pack="25" data-price="105">16л</button>
+                </div>
+                <div class="color-options mt-2">
+                  <strong>Цвет:</strong><br>
+                  <button class="btn btn-color active" data-color="бежевый" title="бежевый" style="background-color: beige;"></button>
+                  <button class="btn btn-color" data-color="фиолетовый" title="фиолетовый" style="background-color: purple;"></button>
+                </div>
+              </div>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col product-card" data-title="Контейнер 6л." data-art="039" data-price="121" data-pack="20" data-img='["images/039.jpg","images/039_up.jpg","images/039_down.jpg","images/039_cap.jpg","images/039_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/039.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/039_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/039_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/039_cap.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/039_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Контейнер 6л.</h5>
+              <p class="text-muted small mb-2">Артикул 039</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 20<br>
+                Цена за шт: 121 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Ведро 'Конус' 10л." data-art="048" data-price="56" data-pack="1" data-img='["images/048.jpg", "images/048_up.jpg", "images/048_down.jpg", "images/048_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/048.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/048_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/048_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/048_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведро "Конус" 10л.</h5>
+              <p class="text-muted small mb-2">Артикул 048</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: —<br>
+                Цена за шт: 56 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+
+        <div class="col product-card" data-title="Ведерко с крышкой 1л." data-art="007" data-price="1" data-pack="14" data-img='["images/007.jpg", "images/007_up.jpg", "images/007_down.jpg", "images/007_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/007.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/007_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/007_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/007_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведерко с крышкой 1л.</h5>
+              <p class="text-muted small mb-2">Артикул 007</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 14<br>
+                Цена за шт: -- ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Ведро 'Сырное' 10л." data-art="013" data-price="75" data-pack="10" data-img='["images/013.jpg", "images/013_up.jpg", "images/013_down.jpg", "images/013_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/013.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/013_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/013_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/013_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведро "Сырное" 10л.</h5>
+              <p class="text-muted small mb-2">Артикул 013</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 10<br>
+                Цена за шт: 75 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Таз 12л." data-art="004" data-price="66" data-pack="25" data-img='["images/004.jpg", "images/004_up.jpg", "images/004_down.jpg", "images/004_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/004.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/004_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/004_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/004_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Таз 12л.</h5>
+              <p class="text-muted small mb-2">Артикул 004</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 25<br>
+                Цена за шт: 66 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="col product-card" data-title="Ведро 'Волна' 15л." data-art="009" data-price="95" data-pack="20" data-img='["images/009.jpg", "images/009_up.jpg", "images/009_down.jpg", "images/009_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/009.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/009_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/009_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/009_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведро "Волна" 15л.</h5>
+              <p class="text-muted small mb-2">Артикул 009</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 20<br>
+                Цена за шт: 95 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="col product-card" data-title="Ведерко с крышкой 0.5л." data-art="008" data-price="1" data-pack="10" data-img='["images/008.jpg", "images/008_up.jpg", "images/008_down.jpg", "images/008_close.jpg", "images/008_down2.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/008.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/008_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/008_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/008_close.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/008_down2.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведерко с крышкой 0.5л.</h5>
+              <p class="text-muted small mb-2">Артикул 008</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 10<br>
+                Цена за шт: -- ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Блюдо круглое" data-art="023" data-price="40" data-pack="50" data-img='["images/023.jpg", "images/023_up.jpg", "images/023_down.jpg", "images/023_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/023.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/023_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/023_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/023_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Блюдо круглое</h5>
+              <p class="text-muted small mb-2">Артикул 023</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 40 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Ведро 'Волна' 15л. с крышкой" data-art="010" data-price="1" data-pack="1" data-img='["images/010.jpg", "images/010_up.jpg", "images/010_down.jpg", "images/010_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/010.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/010_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/010_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/010_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведро "Волна" 15л. с крышкой</h5>
+              <p class="text-muted small mb-2">Артикул 010</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: —<br>
+                Цена за шт: — ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Миска 6л. с крышкой" data-art="070" data-price="1" data-pack="1" data-img='["images/070.jpg", "images/070_up.jpg", "images/070_down.jpg", "images/070_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/070.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/070_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/070_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/070_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Миска 6л. с крышкой</h5>
+              <p class="text-muted small mb-2">Артикул 070</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: --<br>
+                Цена за шт: -- ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col product-card" data-title="Миска 4л." data-art="035" data-price="32" data-pack="50" data-img='["images/035.jpg", "images/035_up.jpg", "images/035_down.jpg","images/035_close.jpg", "images/035_blue.jpg", "images/035_blue_up.jpg","images/035_blue_down.jpg","images/035_blue_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/035.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/035_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/035_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/035_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/035_blue.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/035_blue_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/035_blue_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/035_blue_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Миска 4л.</h5>
+              <p class="text-muted small mb-2">Артикул 035</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 32 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Фруктомойка" data-art="017" data-price="1" data-pack="1" data-img='["images/017_green.jpg", "images/017_green_up.jpg", "images/017_green_down.jpg", "images/017_green_close.jpg", "images/017_green_close_down.jpg", "images/017.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/017_green.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/017_green_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/017_green_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/017_green_close.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/017_green_close_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/017.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Фруктомойка</h5>
+              <p class="text-muted small mb-2">Артикул 017</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 1<br>
+                Цена за шт: 1 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col product-card" data-title="Ведро 'Волна' 7л." data-art="043" data-price="1" data-pack="1" data-img='["images/043.jpg", "images/043_up.jpg", "images/043_down.jpg", "images/043_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/043.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/043_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/043_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/043_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведро "Волна" 7л.</h5>
+              <p class="text-muted small mb-2">Артикул 043</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 1<br>
+                Цена за шт: 1 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Миска 'Волна' 5л. с крышкой" data-art="037" data-price="1" data-pack="1" data-img='["images/037.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/037.jpg" alt="Изображение товара">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Миска "Волна" 5л. с крышкой</h5>
+              <p class="text-muted small mb-2">Артикул 037</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: --<br>
+                Цена за шт: -- ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Салатница с крышкой" data-art="000, 044, 045, 006" data-price="1" data-pack="1, 50, 25, 1 " data-img='["images/salatnica_all.jpg", "images/salatnica_2_5.jpg", "images/salatnica_2_5_up.jpg", "images/salatnica_2_5_down.jpg", "images/salatnica_2_5_close.jpg", "images/salatnica_06_3.jpg", "images/salatnica_06_3_up.jpg", "images/salatnica_06_3_down.jpg", "images/salatnica_06_3_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/salatnica_all.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/salatnica_2_5.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/salatnica_2_5_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/salatnica_2_5_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/salatnica_2_5_close.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/salatnica_06_3.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/salatnica_06_3_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/salatnica_06_3_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/salatnica_06_3_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Салатница с крышкой</h5>
+              <p class="text-muted small mb-2">Артикул 000, 044, 045, 006</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 1, 50, 25, 1<br>
+                Цена за шт: -- ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Поднос 40х55 с рисунком" data-art="018" data-price="108" data-pack="20" data-img='["images/018.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/018.jpg" alt="Изображение товара">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Поднос 40х55 с рисунком</h5>
+              <p class="text-muted small mb-2">Артикул 018</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 20<br>
+                Цена за шт: 108 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="col product-card" data-title="Ведро 'Малина' 3,5л." data-art="015" data-price="36" data-pack="50" data-img="images/bucket_malina.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/bucket_malina.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведро "Малина" 3,5л.</h5>
+              <p class="text-muted small mb-2">Артикул 015</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 36 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Блюдо круглое с рис. 34см." data-art="022" data-price="42" data-pack="50" data-img="images/bludo_paint.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/bludo_paint.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Блюдо круглое с рис. 34см.</h5>
+              <p class="text-muted small mb-2">Артикул 022</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 42 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Поднос 40х55" data-art="019" data-price="80" data-pack="20" data-img="images/podnos.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/podnos.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Поднос 40х55</h5>
+              <p class="text-muted small mb-2">Артикул 019</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 20<br>
+                Цена за шт: 80 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Миска 4,5л." data-art="033" data-price="56" data-pack="1" data-img="images/miska.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/miska.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Миска 4,5л.</h5>
+              <p class="text-muted small mb-2">Артикул 033</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: --<br>
+                Цена за шт: 56 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Миска 'Волна' 5л. с рисунком" data-art="038" data-price="55" data-pack="50" data-img="images/miska_volna_paint.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/miska_volna_paint.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Миска "Волна" 5л. с рисунком</h5>
+              <p class="text-muted small mb-2">Артикул 038</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 55 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+          
+
+        <div class="col product-card" data-title="Миска 2,5л." data-art="034" data-price="50" data-pack="1" data-img="images/miska.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/miska.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Миска 2,5л.</h5>
+              <p class="text-muted small mb-2">Артикул 034</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: --<br>
+                Цена за шт: 50 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Таз 6л." data-art="000" data-price="1" data-pack="1" data-img="images/taz_6.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/taz_6.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Таз 6л.</h5>
+              <p class="text-muted small mb-2">Артикул ---</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: --<br>
+                Цена за шт: -- ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Сырница-дуршлаг 15см." data-art="026" data-price="13" data-pack="250" data-img='["images/026.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/026.jpg" alt="Изображение товара">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Сырница-дуршлаг 15см.</h5>
+              <p class="text-muted small mb-2">Артикул 026</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 250<br>
+                Цена за шт: 13 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Крышки на банку 8см." data-art="027" data-price="3" data-pack="200" data-img="images/krishka_8.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/krishka_8.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Крышки на банку 8см.</h5>
+              <p class="text-muted small mb-2">Артикул 027</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 200<br>
+                Цена за шт: 3 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Таз с рисунком 12л." data-art="003" data-price="82" data-pack="1" data-img="images/taz_paint_12.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/taz_16.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/taz_16_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/taz_16_down.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title fw-semibold">Таз с рисунком 12л.</h5>
+              <p class="text-muted small mb-2">Артикул 003</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: —<br>
+                Цена за шт: 82 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+        
+        <!-- <div class="col product-card" data-title="Совок" data-art="024" data-price="121" data-pack="20" data-img='["images/024_red.jpg","images/024_black.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/024_red.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/024_black.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Совок</h5>
+              <p class="text-muted small mb-2">Артикул 024</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 15 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Кувшин 2л." data-art="028" data-price="42" data-pack="20" data-img='["images/028.jpg", "images/028_close_up.jpg", "images/028_close_down.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/028.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/028_close_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/028_close_down.jpg" alt="Изображение товара">
+              </div>
+              
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Кувшин 2л.</h5>
+              <p class="text-muted small mb-2">Артикул 028</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 20<br>
+                Цена за шт: 42 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="col product-card" data-title="Таз с рисунком 8л." data-art="005" data-price="66" data-pack="50" data-img="images/taz_paint_8.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Таз с рисунком 8л.</h5>
+              <p class="text-muted small mb-2">Артикул 005</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 66 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Поднос 35х50" data-art="021" data-price="63" data-pack="20" data-img="images/podnos.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/podnos.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Поднос 35х50</h5>
+              <p class="text-muted small mb-2">Артикул 021</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 20<br>
+                Цена за шт: 63 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Поднос 35х50 с рисунком" data-art="020" data-price="70" data-pack="20" data-img="images/podnos_paint.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/podnos_paint.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Поднос 35х50 с рисунком</h5>
+              <p class="text-muted small mb-2">Артикул 020</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 20<br>
+                Цена за шт: 70 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col product-card" data-title="Ведро 10л." data-art="011" data-price="61" data-pack="50" data-img='["images/bucket_10.jpg","images/bucket_10_up.jpg","images/bucket_10_down.jpg","images/bucket_10_close.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведро 10л.</h5>
+              <p class="text-muted small mb-2">Артикул 011</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 61 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Ведро 10л. с крышкой" data-art="012" data-price="86" data-pack="1" data-img="images/bucket_10_k.png" data-category="household">
+          <div class="card h-100 border shadow-sm">
+            
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведро 10л. с крышкой</h5>
+              <p class="text-muted small mb-2">Артикул 012</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: —<br>
+                Цена за шт: 86 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="col product-card" data-title="Соусница 0,08л." data-art="030" data-price="2.7" data-pack="1" data-img='["images/030.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/030.jpg" alt="Изображение товара">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Соусница 0,08л.</h5>
+              <p class="text-muted small mb-2">Артикул 030</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: --<br>
+                Цена за шт: 2,7 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Плечики 44см." data-art="029" data-price="14" data-pack="50" data-img='["images/029.jpg"]' data-category="household">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/029.jpg" alt="Изображение товара">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Плечики 44см.</h5>
+              <p class="text-muted small mb-2">Артикул 029</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 14 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Строительные товары -->
+        <!-- <div class="col product-card" data-title="Ведро 'Строительное' 12л." data-art="201" data-price="70" data-pack="50" data-img='["images/032.jpg", "images/032_up.jpg", "images/032_down.jpg", "images/032_close.jpg"]' data-category="construction">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/032.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/032_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/032_down.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/032_close.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Ведро "Строительное" 12л.</h5>
+              <p class="text-muted small mb-2">Артикул 201</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 50<br>
+                Цена за шт: 70 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="СВП 'Флажок'" data-art="215, 216, 217, 218, 219, 220" data-price="1" data-pack="1" data-img='["images/215-217.jpg", "images/218-220.jpg"]' data-category="construction">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/215-217.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/218-220.jpg" alt="Изображение товара">
+              </div>
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">СВП "Флажок"</h5>
+              <p class="text-muted small mb-2">Артикул 215-220</p>
+              <p class="card-text text-muted mb-3">
+                Размер: 1мм. / 1,5мм.<br>
+                Штук в упаковке: 100 / 200 / 500<br>
+                Цена за шт: 0,7 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="СВП 'Кольцо'" data-art="223, 224" data-price="1" data-pack="1" data-img='["images/223-224.jpg"]' data-category="construction">
+          <div class="card h-100 border shadow-sm">
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/223-224.jpg" alt="Изображение товара">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">СВП "Кольцо"</h5>
+              <p class="text-muted small mb-2">Артикул 223, 224</p>
+              <p class="card-text text-muted mb-3">
+                Размер: 1мм. / 1,5мм.<br>
+                Штук в упаковке: 100 / 500<br>
+                Цена за шт: 0,75 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Клин для зажима «Ворота»" data-art="231, 232" data-price="1,1" data-pack="100, 500" data-img='["images/231-232.jpg"]' data-category="construction">
+          <div class="card h-100 border shadow-sm">
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/223-224.jpg" alt="Изображение товара">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Клин для зажима «Ворота»</h5>
+              <p class="text-muted small mb-2">Артикул 231, 232</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 100 / 500<br>
+                Цена за шт: 1,1 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Клин для зажима «Флажок»" data-art="225, 226" data-price="1,2" data-pack="100, 500" data-img='["images/231-232.jpg"]' data-category="construction">
+          <div class="card h-100 border shadow-sm">
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/225-226.jpg" alt="Изображение товара">
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Клин для зажима «Флажок»</h5>
+              <p class="text-muted small mb-2">Артикул 231, 232</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 100 / 500<br>
+                Цена за шт: 1,2 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Подрезетник" data-art="234" data-price="8" data-pack="200" data-img='["images/234.jpg", "images/234_up.jpg", "images/234_down.jpg"]' data-category="construction">
+          <div class="card h-100 border shadow-sm">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+            <div class="gallery-container position-relative">
+              <div class="gallery-images gallery-img fade active">
+                <img src="images/234.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/234_up.jpg" alt="Изображение товара">
+              </div>
+              <div class="gallery-images gallery-img fade">
+                <img src="images/234_down.jpg" alt="Изображение товара">
+              </div>
+
+              <div style="text-align:center">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Подрезетник</h5>
+              <p class="text-muted small mb-2">Артикул 234</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 200<br>
+                Цена за шт: 8 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="col product-card" data-title="Термокольцо диам. 60/65/80/85мм." data-art="211,212,213,214" data-price="3.2" data-pack="100" data-img="images/termokolco.png" data-category="construction">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/termokolco.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Термокольцо диам. 60/65/80/85мм.</h5>
+              <p class="text-muted small mb-2">Артикул 211-214</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 100<br>
+                Цена за шт: 3,2 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Регулировочная пластина 1-6мм." data-art="204,205,206,207,208,209" data-price="0.8" data-pack="1000" data-img="images/regul_plastina.png" data-category="construction">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/regul_plastina.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Регулировочная пластина 1-6мм.</h5>
+              <p class="text-muted small mb-2">Артикул 204-209</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 1000<br>
+                Цена за шт: 0,8 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col product-card" data-title="Фальцевый вкладыш" data-art="210" data-price="1" data-pack="1000" data-img="images/falceviy_vkladish.png" data-category="construction">
+          <div class="card h-100 border shadow-sm">
+            <img src="images/falceviy_vkladish.png" class="card-img-top" alt="Изображение товара" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title fw-semibold">Фальцевый вкладыш</h5>
+              <p class="text-muted small mb-2">Артикул 210</p>
+              <p class="card-text text-muted mb-3">
+                Штук в упаковке: 1000<br>
+                Цена за шт: 1 ₽
+              </p>
+              <div class="mt-auto d-flex justify-content-between">
+                <small class="price text-dark fw-bold fs-4"></small>
+                <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Форма заявки -->
+  <section class="bg-light py-5" id="request">
+    <div class="container">
+      <h2 class="mb-4 text-center">Оставить заявку</h2>
+      <form id="contactForm" class="needs-validation" novalidate action="/server/submit-form.php" method="POST">
+        <div class="row g-3">
+          <div class="col-12">
+            <label for="name" class="form-label">Ваше ФИО *</label>
+            <input type="text" class="form-control" id="name" name="name" required aria-required="true" placeholder="Введите ваше имя и фамилию">
+            <div class="invalid-feedback">Пожалуйста, введите ваше ФИО.</div>
+          </div>
+          <div class="col-12">
+            <label for="phone" class="form-label">Номер телефона *</label>
+            <input type="tel" class="form-control" id="phone" name="phone" required aria-required="true" placeholder="+7 (___) ___-__-__">
+            <div class="invalid-feedback">Введите корректный российский номер (например, +7 (999) 123-45-67).</div>
+          </div>
+          <div class="col-12">
+            <label for="email" class="form-label">Электронная почта *</label>
+            <input type="email" class="form-control" id="email" name="email" required aria-required="true" placeholder="example@domain.com">
+            <div class="invalid-feedback">Введите корректный email-адрес.</div>
+          </div>
+          <div class="col-12">
+            <label for="message" class="form-label">Комментарий или описание заказа</label>
+            <textarea class="form-control" id="message" name="message" rows="4" placeholder="Опишите ваш заказ или вопросы"></textarea>
+            <div class="invalid-feedback">Поле не должно быть пустым.</div>
+          </div>
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary">Отправить заявку</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+  
+  <!-- Футер -->
+  <footer class="text-center text-white bg-dark py-4">
+    <div class="container">
+      <p class="mb-0">&copy; <span id="year"></span> MNPLAST — Все права защищены.</p>
+    </div>
+  </footer>
+
+<button id="backToTop" class="back-to-top hidden"><i class="bi bi-arrow-up"></i></button>
+<div id="imgModal" class="modal" style="display: none;">
+  <span class="close">&times;</span>
+  <button class="modal-prev">&#10094;</button>
+  <img class="modal-content" id="modalImg" src="">
+  <button class="modal-next">&#10095;</button>
+</div>
+
+<script src="scripts/index.js"></script>
+</body>
+</html>
