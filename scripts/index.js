@@ -338,13 +338,17 @@ document.addEventListener("DOMContentLoaded", function () {
   function showNext() {
     if (currentImages.length === 0) return;
     currentIndex = (currentIndex + 1) % currentImages.length;
+    modalImg.classList.remove('fade-in');
     modalImg.src = currentImages[currentIndex];
+    requestAnimationFrame(() => modalImg.classList.add('fade-in'));
   }
 
   function showPrev() {
     if (currentImages.length === 0) return;
     currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    modalImg.classList.remove('fade-in');
     modalImg.src = currentImages[currentIndex];
+    requestAnimationFrame(() => modalImg.classList.add('fade-in'));
   }
 
   // Свайпы для модального окна

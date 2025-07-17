@@ -5,6 +5,13 @@ body {
   color: #212529;
   margin: 0;
   padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5 {
@@ -12,7 +19,6 @@ h1, h2, h3, h4, h5 {
   color: #212529;
 }
 
-/* Шапка сайта (header) */
 header {
   background-color: #ffffff;
   padding: 20px 40px;
@@ -409,121 +415,11 @@ footer p {
   margin: 5px 0;
 }
 
-
-/* Бургер-кнопка */
-.menu-toggle {
-  background: none;
-  border: none;
-  padding: 8px;
-  margin-left: auto;
-  cursor: pointer;
-  display: none;
-}
-
-@media (max-width: 1024px) {
-  .menu-toggle {
-    display: block !important;
-  }
-  .header-center, .header-right {
-    display: none !important;
-  }
-  .back-to-top {
-    display: none !important;
-  }
-}
-
-/* Базовые стили */
-header {
-  position: relative;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.card-img-top, .img-fluid {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-}
-
-/* Галерея */
-.gallery-container {
-  position: relative;
-  overflow: hidden;
-  touch-action: pan-x; /* Поддержка свайпов */
-}
-
-.gallery-img {
-  display: none;
-}
-
-.gallery-img.visible {
-  display: block;
-}
-
-/* Модальное окно */
-.modal {
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  touch-action: pan-x; /* Поддержка свайпов */
-}
-
-.modal-content {
-  max-width: 90vw;
-  max-height: 80vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 8px;
-}
-
-.close {
-  position: fixed;
-  top: 20px;
-  right: 30px;
-  color: white;
-  font-size: 32px;
-  cursor: pointer;
-}
-
-.modal-prev, .modal-next {
-  position: absolute;
-  top: 50%;
-  font-size: 36px;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-  user-select: none;
-  padding: 12px;
-  transform: translateY(-50%);
-}
-
-.modal-prev {
-  left: 30px;
-}
-.modal-next {
-  right: 30px;
-}
-
-.modal-prev:hover, .modal-next:hover {
-  color: #ddd;
-}
-
 /* Адаптивность */
 /* Мобильные устройства (до 575.98px) */
 @media (max-width: 575.98px) {
   header {
-    padding: 8px 8px;
+    padding: 8px;
     flex-direction: row !important;
   }
   .header-left {
@@ -550,7 +446,7 @@ header {
   .close {
     font-size: 24px;
     top: 10px;
-    right: 15px;
+    right: 10px;
   }
   .favorites .col-md-4 {
     margin-top: 20px;
@@ -668,12 +564,12 @@ header {
 
 /* Мобильное меню */
 .mobile-menu {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 0;
   right: 0;
   height: 100vh;
-  width: 320px;
-  max-width: 95vw;
+  width: 100%;
+  max-width: 320px;
   background: #fff;
   box-shadow: -2px 0 16px rgba(0,0,0,0.08);
   padding: 40px 20px 20px 20px;
@@ -682,14 +578,14 @@ header {
   pointer-events: none;
   transition: transform .3s cubic-bezier(.4,0,.2,1), opacity .3s;
   z-index: 1050;
-  border-radius: 0 0 0 8px;
+  border-radius: 0;
   overflow-y: auto;
   scroll-behavior: smooth;
 }
 
 @media (max-width: 320px) {
   .mobile-menu {
-    width: 280px;
+    max-width: 280px;
     padding: 30px 15px 15px 15px;
   }
   .mobile-menu a {
