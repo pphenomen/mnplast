@@ -382,42 +382,67 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentSlide = 0;
     const galleryImgs = card.querySelectorAll('.gallery-img');
-    const dots = card.querySelectorAll('.dot');
+    const dotsContainer = card.querySelector('.dots-container');
     const prev = card.querySelector('.prev');
     const next = card.querySelector('.next');
 
-    if (imgs.length <= 1) {
-      if (prev) prev.style.display = 'none';
-      if (next) next.style.display = 'none';
+    function getFilteredImages() {
+      return Array.from(galleryImgs).filter(div => div.classList.contains('color-match'));
     }
 
     function showSlide(index) {
-      if (index >= galleryImgs.length) {
+      const filteredImages = getFilteredImages();
+      if (filteredImages.length === 0) return;
+
+      if (index >= filteredImages.length) {
         currentSlide = 0;
       } else if (index < 0) {
-        currentSlide = galleryImgs.length - 1;
+        currentSlide = filteredImages.length - 1;
       } else {
         currentSlide = index;
       }
 
-      galleryImgs.forEach((div, i) => {
+      filteredImages.forEach((div, i) => {
         div.classList.toggle('visible', i === currentSlide);
       });
 
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
-      });
+      updateDots(filteredImages.length, currentSlide);
+    }
+
+    function updateDots(count, activeIndex) {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (i === activeIndex ? ' active' : '');
+        dot.addEventListener('click', () => showSlide(i));
+        dotsContainer.appendChild(dot);
+      }
     }
 
     // Инициализация слайда
-    showSlide(currentSlide);
-
-    // Обработчики для точек
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        showSlide(i);
+    const initialColor = card.querySelector('.btn-color.active')?.dataset.color;
+    card.querySelectorAll('.btn-color').forEach(btn => {
+      btn.addEventListener('click', () => {
+        card.querySelectorAll('.btn-color').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updateGallery(btn.dataset.color);
       });
     });
+
+    function updateGallery(selectedColor) {
+      galleryImgs.forEach((imgDiv) => {
+        const img = imgDiv.querySelector('img');
+        const isMatch = img?.getAttribute('img-color') === selectedColor;
+        imgDiv.classList.toggle('color-match', isMatch);
+        imgDiv.classList.remove('visible');
+      });
+      currentSlide = 0;
+      showSlide(currentSlide);
+    }
+
+    updateGallery(initialColor);
+    showSlide(currentSlide);
 
     // Обработчики для стрелок
     if (prev && imgs.length > 1) {
@@ -447,8 +472,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Открытие модального окна
     card.querySelectorAll('.gallery-img img').forEach((img, i) => {
       img.addEventListener('click', () => {
-        const selectedColor = card.querySelector('.btn-color.active')?.dataset.color || 'фиолетовый';
-        openModal(imgs, i, selectedColor);
+        const selectedColor = card.querySelector('.btn-color.active')?.dataset.color;
+        const filteredIndex = getFilteredImages().findIndex(div => div.querySelector('img').src === img.src);
+        openModal(imgs, filteredIndex, selectedColor);
       });
     });
   });
