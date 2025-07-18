@@ -200,7 +200,7 @@ section {
 
 .prev, .next {
   position: absolute;
-  top: 25%;
+  top: 20%;
   width: auto;
   margin-top: -22px;
   padding: 16px;
@@ -224,7 +224,7 @@ section {
 
 .dots-container {
   text-align: center;
-  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .dot {
@@ -246,15 +246,19 @@ section {
   to {opacity: 1}
 }
 
-/* избранное */
+/* Избранное */
 .fav-gallery {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
 .fav-img {
-  width: 100%;
-  height: 200px;
-  object-fit: contain;
+  width: 250px;
+  height: 150px;
+  object-fit: cover;
 }
 
 .fav-prev, .fav-next {
@@ -262,8 +266,6 @@ section {
   top: 40%;
   background: white;
   border: none;
-  font-size: 18px;
-  padding: 4px 6px;
   cursor: pointer;
   user-select: none;
 }
@@ -275,27 +277,38 @@ section {
 .fav-prev { left: 5px; }
 .fav-next { right: 5px; }
 
+.fav-img-list {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fav-img-list img {
+  opacity: 1;
+  display: block;
+}
+
 /* Управление количеством */
 .qty-controls {
-  background-color: #f0f0f0;
-  border-radius: 8px;
-  padding: 1px 5px;
+  position: absolute;
+  right: 4rem;
+  bottom: 2.5rem;
   display: inline-flex;
   gap: 10px;
-  user-select: none;
+  padding: 4px;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 8px;
 }
 
 .qty-btn {
   background: none;
   border: none;
-  color: #222;
   font-size: 18px;
   font-weight: bold;
-  padding: 2px 4px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-
 .qty-btn:hover {
   background-color: #e0e0e0;
   border-radius: 4px;
@@ -303,10 +316,14 @@ section {
 
 .qty-number {
   color: #222;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   min-width: 24px;
   text-align: center;
+}
+.card-body small.text-dark.fs-4 {
+  display: block;
+  margin-top: 0.5rem;
 }
 
 /* Кнопка удаления товара */
@@ -495,7 +512,46 @@ footer p {
   .card-img-top, .img-fluid {
     max-height: 120px;
   }
-  .prev, .next {
+  .card .row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card .col-4 {
+    width: 100%;
+    order: 1;
+  }
+
+  .card .col-5 {
+    width: 100%;
+    order: 2;
+  }
+
+  .card .col-2 {
+    width: 100%;
+    order: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    margin-top: 8px;
+  }
+
+  .col-2 strong {
+    font-size: 16px;
+  }
+  .card-body small.text-dark.fs-4 {
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+  .qty-controls {
+    right: 2rem;
+    bottom: 2rem;
+  }
+  .qty-number {
+    font-size: 20px;
+  }
+  .fav-prev, .fav-next, .prev, .next {
     display: none !important;
   }
   .modal-prev, .modal-next {
@@ -505,15 +561,6 @@ footer p {
     font-size: 24px;
     top: 10px;
     right: 10px;
-  }
-  .favorites .col-md-4 {
-    margin-top: 20px;
-  }
-  .favorites .card {
-    padding: 20px;
-  }
-  .favorites .form-control, .favorites .btn {
-    font-size: 0.9rem;
   }
 }
 
@@ -535,8 +582,12 @@ footer p {
   .card-img-top, .img-fluid {
     max-height: 140px;
   }
-  .prev, .next {
+  .fav-prev, .fav-next, .prev, .next {
     display: none !important;
+  }
+  .qty-controls {
+    right: 2rem;
+    bottom: 2rem;
   }
   .modal-prev, .modal-next {
     display: none !important;
@@ -567,8 +618,12 @@ footer p {
   .card-img-top, .img-fluid {
     max-height: 160px;
   }
-  .prev, .next {
+  .fav-prev, .fav-next, .prev, .next {
     display: none !important;
+  }
+  .qty-controls {
+    right: 1rem;
+    bottom: 2rem;
   }
   .modal-prev, .modal-next {
     font-size: 30px;
