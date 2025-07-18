@@ -129,19 +129,23 @@
               <h5 class="card-title fw-bold fs-4">Таз «Лотос»</h5>
               <small class="text-muted sku"></small>
               <small class="text-muted pack mb-2"></small>
-              <div class="product-options mb-3">
-                <div class="volume-options mb-2">
-                  <strong>Объём:</strong><br>
-                  <button class="btn btn-outline-primary btn-volume active" data-art="002" data-volume="8" data-pack="50" data-price="64">8л</button>
-                  <button class="btn btn-outline-primary btn-volume" data-art="001" data-volume="16" data-pack="25" data-price="105">16л</button>
+              <div class="product-options d-flex flex-wrap gap-5 mb-2">
+                <div class="volume-options d-flex flex-column align-items-start">
+                  <strong>Объём:</strong>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-primary btn-volume active" data-art="002" data-volume="8" data-pack="50" data-price="64">8л</button>
+                    <button class="btn btn-outline-primary btn-volume" data-art="001" data-volume="16" data-pack="25" data-price="105">16л</button>
+                  </div>
                 </div>
-                <div class="color-options mt-2">
-                  <strong>Цвет:</strong><br>
-                  <button class="btn btn-color active" data-color="бежевый" title="бежевый" style="background-color: beige;"></button>
-                  <button class="btn btn-color" data-color="фиолетовый" title="фиолетовый" style="background-color: purple;"></button>
+                <div class="color-options d-flex flex-column align-items-start">
+                  <strong>Цвет:</strong>
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-color active" data-color="бежевый" title="бежевый" style="background-color: beige;"></button>
+                    <button class="btn btn-color" data-color="фиолетовый" title="фиолетовый" style="background-color: purple;"></button>
+                  </div>
                 </div>
               </div>
-              <div class="mt-auto d-flex justify-content-between">
+              <div class="d-flex justify-content-between">
                 <small class="price text-dark fw-bold fs-4"></small>
                 <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
               </div>
@@ -149,28 +153,28 @@
           </div>
         </div>
 
-        <!-- <div class="col product-card" data-title="Контейнер 6л." data-art="039" data-price="121" data-pack="20" data-img='["images/039.jpg","images/039_up.jpg","images/039_down.jpg","images/039_cap.jpg","images/039_close.jpg"]' data-category="household">
+        <div class="col product-card" data-title="Контейнер 6л." data-img='["images/039.jpg","images/039_up.jpg","images/039_down.jpg","images/039_cap.jpg","images/039_close.jpg"]' data-category="household">
           <div class="card h-100 border shadow-sm">
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
             <div class="gallery-container position-relative">
-              <div class="gallery-images gallery-img fade active">
-                <img src="images/039.jpg" alt="Изображение товара" loading="lazy">
+              <div class="gallery-images gallery-img fade color-match visible">
+                <img src="images/039.jpg" img-color="прозрачный" alt="Изображение товара" loading="lazy">
               </div>
-              <div class="gallery-images gallery-img fade">
-                <img src="images/039_up.jpg" alt="Изображение товара" loading="lazy">
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/039_up.jpg" img-color="прозрачный" alt="Изображение товара" loading="lazy">
               </div>
-              <div class="gallery-images gallery-img fade">
-                <img src="images/039_down.jpg" alt="Изображение товара" loading="lazy">
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/039_down.jpg" img-color="прозрачный" alt="Изображение товара" loading="lazy">
               </div>
-              <div class="gallery-images gallery-img fade">
-                <img src="images/039_cap.jpg" alt="Изображение товара" loading="lazy">
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/039_cap.jpg" img-color="прозрачный" alt="Изображение товара" loading="lazy">
               </div>
-              <div class="gallery-images gallery-img fade">
-                <img src="images/039_close.jpg" alt="Изображение товара" loading="lazy">
+              <div class="gallery-images gallery-img fade color-match">
+                <img src="images/039_close.jpg" img-color="прозрачный" alt="Изображение товара" loading="lazy">
               </div>
 
-              <div style="text-align:center">
+              <div class="dots-container">
                 <span class="dot"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>
@@ -178,21 +182,29 @@
                 <span class="dot"></span>
               </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title fw-semibold">Контейнер 6л.</h5>
-              <p class="text-muted small mb-2">Артикул 039</p>
-              <p class="card-text text-muted mb-3">
-                Штук в упаковке: 20<br>
-                Цена за шт: 121 ₽
-              </p>
-              <div class="mt-auto d-flex justify-content-between">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title fw-bold fs-4">Контейнер для еды</h5>
+              <small class="text-muted sku"></small>
+              <small class="text-muted pack mb-2"></small>
+              <div class="product-options d-flex flex-wrap gap-5 mb-2">
+                <div class="volume-options d-flex flex-column align-items-start">
+                  <strong>Объём:</strong>
+                  <button class="btn btn-outline-primary btn-volume active" data-art="039" data-volume="6" data-pack="20" data-price="121">6л</button>
+                </div>
+                <div class="color-options d-flex flex-column align-items-start">
+                  <strong>Цвет:</strong>
+                  <button class="btn btn-color active" data-color="прозрачный" title="прозрачный" style="background: linear-gradient(to right, white 50%, royalblue 50%);"></button>
+                </div>
+              </div>
+              <div class="d-flex justify-content-between">
                 <small class="price text-dark fw-bold fs-4"></small>
                 <button class="btn btn-primary btn-fav"><i class="bi bi-star"></i> В избранное</button>
               </div>
             </div>
           </div>
-        </div>
+        </div> 
 
+        <!--
         <div class="col product-card" data-title="Ведро 'Конус' 10л." data-art="048" data-price="56" data-pack="1" data-img='["images/048.jpg", "images/048_up.jpg", "images/048_down.jpg", "images/048_close.jpg"]' data-category="household">
           <div class="card h-100 border shadow-sm">
             <button class="prev">&#10094;</button>

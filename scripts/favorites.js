@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (!line.startsWith('Итого:')) out.push(line);
     }
-    out.push('', `Итого: ${totalSum.toLocaleString()} ₽`);
+    out.push(`Итого: ${totalSum.toLocaleString()} ₽`);
     messageField.value = out.join('\n');
   }
 
