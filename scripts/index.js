@@ -328,12 +328,16 @@ function setupFavoriteButtons() {
       };
     }
 
-    function getMatchedImages(color) {
+    function getMatchedImages(color, art) {
       const imageDivs = card.querySelectorAll('.gallery-img');
       return Array.from(imageDivs)
-        .map(div => div.querySelector('img'))
-        .filter(img => img?.getAttribute('img-color') === color)
-        .map(img => img?.src)
+        .filter(div => {
+          const img = div.querySelector('img');
+          const matchColor = img?.getAttribute('img-color') === color;
+          const matchArt = div.dataset.art === art;
+          return matchColor && matchArt;
+        })
+        .map(div => div.querySelector('img')?.src)
         .filter(src => src);
     }
 
@@ -373,7 +377,7 @@ function setupFavoriteButtons() {
         return;
       }
 
-      const matchedImages = getMatchedImages(data.color);
+      const matchedImages = getMatchedImages(data.color, data.art);
       if (!matchedImages.length) {
         alert(`Изображения для цвета "${data.color}" отсутствуют.`);
         return;
