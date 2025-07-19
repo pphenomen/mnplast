@@ -57,11 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const price      = Number(item.price);
       const pack       = Number(item.pack);
       const qty        = Number(item.qty) || 1;
+      const volume      = item.volume;
       const color      = item.color;
       const totalItems = pack * qty;
       const totalCost  = price * totalItems;
       const dotsHTML = item.img.map((_, index) => `<span class="dot" onclick="showImage(${i}, ${index})"></span>`).join('');
-
 
       totalUnits += totalItems;
       totalSum   += totalCost;
@@ -82,9 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="col-5">
             <div class="card-body py-2">
               <h6 class="fs-5"><strong>${item.title}<small class="text-muted">  (арт. ${item.art})</small><br></strong></h6>
-              
               <small class="text-muted">Упаковка: ${pack}</small><br>
               <small class="text-muted">Цена за шт.: ${price} ₽</small><br>
+              <small class="text-muted">Объём: ${volume} л.</small><br>
               <small class="text-muted">Цвет: ${color}</small><br>
               <small class="text-dark fs-4"><strong>${totalCost.toLocaleString()} ₽</strong></small>
               <button class="btn-close" aria-label="Удалить" onclick="removeItem(${i})"></button>
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const qty = Number(item.qty) || 1;
       const cost = qty * pack * price;
       totalSum += cost;
-      return `• ${item.title} ${item.color} (арт. ${item.art}) — ${qty} уп. × ${pack} шт. = ${cost.toLocaleString()} ₽`;
+      return `• ${item.title} ${item.volume}л. ${item.color} (арт. ${item.art}) — ${qty} уп. × ${pack} шт. = ${cost.toLocaleString()} ₽`;
     });
     messageField.value = `Хочу заказать:\n${lines.join('\n')}\n\nИтого: ${totalSum.toLocaleString()} ₽`;
   }

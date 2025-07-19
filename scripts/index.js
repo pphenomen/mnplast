@@ -102,87 +102,124 @@ if (categorySelect) categorySelect.addEventListener('change', filterCards);
 filterCards();
 
 // карточка товара
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.product-card').forEach(function (card) {
-    const volumeBtns = card.querySelectorAll('.btn-volume')
-    const colorBtns = card.querySelectorAll('.btn-color')
-    const images = card.querySelectorAll('.gallery-img')
-    const priceElem = card.querySelector('.price')
-    const skuElem = card.querySelector('.sku')
-    const packElem = card.querySelector('.pack')
-    const dotsContainer = card.querySelector('.dots-container')
-    let currentSlide = 0
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.product-card').forEach(card => {
+    const volumeBtns = card.querySelectorAll('.btn-volume');
+    const colorBtns = card.querySelectorAll('.btn-color');
+    const priceElem = card.querySelector('.price');
+    const skuElem = card.querySelector('.sku');
+    const packElem = card.querySelector('.pack');
+    const dotsContainer = card.querySelector('.dots-container');
+    let currentSlide = 0;
+    let selectedVolumeArt = null; // Хранит текущий выбранный артикул (объем)
+    let selectedColor = null;   // Хранит текущий выбранный цвет
 
-    function getColorMatchedImages() {
-      return Array.from(images).filter(imgDiv => imgDiv.classList.contains('color-match'))
+    // Функция обновления галереи
+    function updateGallery() {
+      const mode = card.dataset.galleryMode || 'both'; // Режим фильтрации: both, color, art
+      const images = Array.from(card.querySelectorAll('.gallery-img'));
+
+      const pool = images.filter(div => {
+        const img = div.querySelector('img');
+        const matchColor = selectedColor ? img.getAttribute('img-color') === selectedColor : true;
+        const matchArt = selectedVolumeArt ? div.dataset.art === selectedVolumeArt : true;
+        if (mode === 'both') return matchColor && matchArt; // Фильтр по цвету и объему
+        if (mode === 'color') return matchColor;           // Только по цвету
+        return matchArt;                                   // Только по объему
+      });
+
+      // Скрываем все изображения
+      images.forEach(div => {
+        div.classList.remove('color-match', 'visible');
+        div.style.display = 'none';
+      });
+
+      // Показываем отфильтрованные
+      pool.forEach(div => div.classList.add('color-match'));
+
+      // Показываем первый слайд
+      currentSlide = 0;
+      showSlide(currentSlide);
     }
 
+    // Показ текущего слайда
     function showSlide(index) {
-      const visibleImgs = getColorMatchedImages()
-      if (visibleImgs.length === 0) return
-      currentSlide = (index + visibleImgs.length) % visibleImgs.length
-      visibleImgs.forEach((imgDiv, i) => {
-        imgDiv.classList.toggle('visible', i === currentSlide)
-      })
-      updateDots(visibleImgs.length, currentSlide)
+      const slides = Array.from(card.querySelectorAll('.gallery-img.color-match'));
+      if (!slides.length) return;
+
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides.forEach((div, i) => {
+        if (i === currentSlide) {
+          div.classList.add('visible');
+          div.style.display = '';
+        } else {
+          div.classList.remove('visible');
+          div.style.display = 'none';
+        }
+      });
+
+      updateDots(slides.length, currentSlide);
     }
 
+    // Обновление точек навигации
     function updateDots(count, activeIndex) {
-      if (!dotsContainer) return
-      dotsContainer.innerHTML = ''
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
       for (let i = 0; i < count; i++) {
-        const dot = document.createElement('span')
-        dot.className = 'dot' + (i === activeIndex ? ' active' : '')
-        dot.addEventListener('click', () => showSlide(i))
-        dotsContainer.appendChild(dot)
+        const dot = document.createElement('span');
+        dot.className = 'dot' + (i === activeIndex ? ' active' : '');
+        dot.addEventListener('click', () => showSlide(i));
+        dotsContainer.appendChild(dot);
       }
     }
 
-    function updateGallery(selectedColor) {
-      images.forEach((imgDiv) => {
-        const img = imgDiv.querySelector('img')
-        const isMatch = img?.getAttribute('img-color') === selectedColor
-        imgDiv.classList.toggle('color-match', isMatch)
-        imgDiv.classList.remove('visible')
-      })
-      currentSlide = 0
-      showSlide(currentSlide)
-    }
-
+    // Обновление информации о товаре
     function updateInfo(btn) {
-      skuElem.textContent = `Артикул: ${btn.dataset.art}`
-      packElem.textContent = `Упаковка: ${btn.dataset.pack} шт.`
-      priceElem.textContent = `${btn.dataset.price} ₽`
+      skuElem.textContent = `Артикул: ${btn.dataset.art}`;
+      packElem.textContent = `Упаковка: ${btn.dataset.pack} шт.`;
+      priceElem.textContent = `${btn.dataset.price} ₽`;
     }
 
+    // Обработка клика по кнопкам объема
     volumeBtns.forEach(btn => {
-      btn.addEventListener('click', function () {
-        volumeBtns.forEach(b => b.classList.remove('active'))
-        btn.classList.add('active')
-        updateInfo(btn)
-      })
-    })
+      btn.addEventListener('click', () => {
+        volumeBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedVolumeArt = btn.dataset.art;
+        updateInfo(btn);
+        updateGallery();
+      });
+    });
 
+    // Обработка клика по кнопкам цвета
     colorBtns.forEach(btn => {
-      btn.addEventListener('click', function () {
-        colorBtns.forEach(b => b.classList.remove('active'))
-        btn.classList.add('active')
-        updateGallery(btn.dataset.color)
-      })
-    })
+      btn.addEventListener('click', () => {
+        colorBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedColor = btn.dataset.color;
+        updateGallery();
+      });
+    });
 
-    const activeVolume = Array.from(volumeBtns).find(b => b.classList.contains('active')) || volumeBtns[0]
-    if (activeVolume) updateInfo(activeVolume)
+    // Инициализация при загрузке страницы
+    const initVol = card.querySelector('.btn-volume.active') || volumeBtns[0];
+    const initCol = card.querySelector('.btn-color.active') || colorBtns[0];
 
-    const activeColor = Array.from(colorBtns).find(b => b.classList.contains('active')) || colorBtns[0]
-    if (activeColor) updateGallery(activeColor.dataset.color)
+    if (initVol) {
+      selectedVolumeArt = initVol.dataset.art;
+      updateInfo(initVol);
+    }
+    if (initCol) {
+      selectedColor = initCol.dataset.color;
+    }
+    updateGallery(); // Применяем фильтрацию сразу после загрузки
 
-    const prevBtn = card.querySelector('.prev')
-    const nextBtn = card.querySelector('.next')
-    if (prevBtn) prevBtn.addEventListener('click', () => showSlide(currentSlide - 1))
-    if (nextBtn) nextBtn.addEventListener('click', () => showSlide(currentSlide + 1))
-  })
-})
+    // Навигация по стрелкам
+    card.querySelector('.prev')?.addEventListener('click', () => showSlide(currentSlide - 1));
+    card.querySelector('.next')?.addEventListener('click', () => showSlide(currentSlide + 1));
+  });
+});
 
 // логика кнопки "В избранное"
 function setupFavoriteButtons() {
@@ -206,7 +243,8 @@ function setupFavoriteButtons() {
         art: selectedVolume.dataset.art,
         color: selectedColor.dataset.color,
         pack: parseFloat(selectedVolume.dataset.pack?.replace(',', '.') || '0'),
-        price: parseFloat(selectedVolume.dataset.price?.replace(',', '.') || '0')
+        price: parseFloat(selectedVolume.dataset.price?.replace(',', '.') || '0'),
+        volume: selectedVolume.dataset.volume
       };
     }
 
@@ -271,6 +309,7 @@ function setupFavoriteButtons() {
           pack: data.pack,
           price: data.price,
           color: data.color,
+          volume: data.volume,
           qty: 1
         });
         localStorage.setItem('favorites', JSON.stringify(favorites));
