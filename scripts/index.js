@@ -300,7 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-
 // логика кнопки "В избранное"
 function setupFavoriteButtons() {
   let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
