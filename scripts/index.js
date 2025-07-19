@@ -101,8 +101,66 @@ if (searchInput) searchInput.addEventListener('input', filterCards);
 if (categorySelect) categorySelect.addEventListener('change', filterCards);
 filterCards();
 
-// карточка товара
 document.addEventListener('DOMContentLoaded', () => {
+  // модальное окно
+  const modal = document.getElementById("imgModal");
+  const modalImg = document.getElementById("modalImg");
+  const closeBtn = modal.querySelector(".close");
+  const prevBtn = modal.querySelector(".modal-prev");
+  const nextBtn = modal.querySelector(".modal-next");
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  // открыть модальное изображение
+  function openModal(imagesArray, index) {
+    currentImages = imagesArray;
+    currentIndex = index % currentImages.length;
+    modalImg.src = currentImages[currentIndex];
+    modal.style.display = "flex";
+    const showControls = currentImages.length > 1 && window.innerWidth > 767;
+    prevBtn.style.display = showControls ? 'block' : 'none';
+    nextBtn.style.display = showControls ? 'block' : 'none';
+  }
+
+  // закрыть модалку
+  function closeModal() {
+    modal.style.display = "none";
+    currentImages = [];
+    currentIndex = 0;
+  }
+
+  // следующий слайд модалки
+  function showNext() {
+    if (!currentImages.length) return;
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    modalImg.classList.remove('fade-in');
+    modalImg.src = currentImages[currentIndex];
+    requestAnimationFrame(() => modalImg.classList.add('fade-in'));
+  }
+
+  // предыдущий слайд модалки
+  function showPrev() {
+    if (!currentImages.length) return;
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    modalImg.classList.remove('fade-in');
+    modalImg.src = currentImages[currentIndex];
+    requestAnimationFrame(() => modalImg.classList.add('fade-in'));
+  }
+
+  closeBtn.addEventListener("click", closeModal);
+  nextBtn.addEventListener("click", showNext);
+  prevBtn.addEventListener("click", showPrev);
+
+  // свайпы для модалки
+  let touchStartX = 0;
+  modal.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+  modal.addEventListener('touchend', e => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX;
+    if (deltaX > 50) showPrev();
+    if (deltaX < -50) showNext();
+  });
+
   document.querySelectorAll('.product-card').forEach(card => {
     const volumeBtns = card.querySelectorAll('.btn-volume');
     const colorBtns = card.querySelectorAll('.btn-color');
@@ -110,59 +168,66 @@ document.addEventListener('DOMContentLoaded', () => {
     const skuElem = card.querySelector('.sku');
     const packElem = card.querySelector('.pack');
     const dotsContainer = card.querySelector('.dots-container');
+    const galleryImgs = card.querySelectorAll('.gallery-img');
     let currentSlide = 0;
-    let selectedVolumeArt = null; // Хранит текущий выбранный артикул (объем)
-    let selectedColor = null;   // Хранит текущий выбранный цвет
+    let selectedVolumeArt = null;
+    let selectedColor = null;
 
-    // Функция обновления галереи
+    // обновить цену, артикул, упаковку
+    function updateInfo(btn) {
+      skuElem.textContent = `Артикул: ${btn.dataset.art}`;
+      packElem.textContent = `Упаковка: ${btn.dataset.pack} шт.`;
+      priceElem.textContent = `${btn.dataset.price} ₽`;
+    }
+
+    // получить отфильтрованные изображения
+    function getFilteredImages() {
+      return Array.from(galleryImgs).filter(div => div.classList.contains('color-match'));
+    }
+
+    // фильтровать и отобразить галерею
     function updateGallery() {
-      const mode = card.dataset.galleryMode || 'both'; // Режим фильтрации: both, color, art
-      const images = Array.from(card.querySelectorAll('.gallery-img'));
+      const mode = card.dataset.galleryMode || 'both';
 
-      const pool = images.filter(div => {
+      const pool = Array.from(galleryImgs).filter(div => {
         const img = div.querySelector('img');
         const matchColor = selectedColor ? img.getAttribute('img-color') === selectedColor : true;
         const matchArt = selectedVolumeArt ? div.dataset.art === selectedVolumeArt : true;
-        if (mode === 'both') return matchColor && matchArt; // Фильтр по цвету и объему
-        if (mode === 'color') return matchColor;           // Только по цвету
-        return matchArt;                                   // Только по объему
+        if (mode === 'both') return matchColor && matchArt;
+        if (mode === 'color') return matchColor;
+        return matchArt;
       });
 
-      // Скрываем все изображения
-      images.forEach(div => {
+      galleryImgs.forEach(div => {
         div.classList.remove('color-match', 'visible');
         div.style.display = 'none';
       });
 
-      // Показываем отфильтрованные
-      pool.forEach(div => div.classList.add('color-match'));
+      pool.forEach(div => {
+        div.classList.add('color-match');
+        div.style.display = 'none';
+      });
 
-      // Показываем первый слайд
       currentSlide = 0;
       showSlide(currentSlide);
     }
 
-    // Показ текущего слайда
+    // показать конкретный слайд
     function showSlide(index) {
-      const slides = Array.from(card.querySelectorAll('.gallery-img.color-match'));
-      if (!slides.length) return;
+      const filteredImages = getFilteredImages();
+      if (!filteredImages.length) return;
 
-      currentSlide = (index + slides.length) % slides.length;
+      currentSlide = (index + filteredImages.length) % filteredImages.length;
 
-      slides.forEach((div, i) => {
-        if (i === currentSlide) {
-          div.classList.add('visible');
-          div.style.display = '';
-        } else {
-          div.classList.remove('visible');
-          div.style.display = 'none';
-        }
+      filteredImages.forEach((div, i) => {
+        div.classList.toggle('visible', i === currentSlide);
+        div.style.display = i === currentSlide ? '' : 'none';
       });
 
-      updateDots(slides.length, currentSlide);
+      updateDots(filteredImages.length, currentSlide);
     }
 
-    // Обновление точек навигации
+    // отрисовать точки
     function updateDots(count, activeIndex) {
       if (!dotsContainer) return;
       dotsContainer.innerHTML = '';
@@ -174,14 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Обновление информации о товаре
-    function updateInfo(btn) {
-      skuElem.textContent = `Артикул: ${btn.dataset.art}`;
-      packElem.textContent = `Упаковка: ${btn.dataset.pack} шт.`;
-      priceElem.textContent = `${btn.dataset.price} ₽`;
-    }
-
-    // Обработка клика по кнопкам объема
+    // выбор объёма
     volumeBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         volumeBtns.forEach(b => b.classList.remove('active'));
@@ -192,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Обработка клика по кнопкам цвета
+    // выбор цвета
     colorBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         colorBtns.forEach(b => b.classList.remove('active'));
@@ -202,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Инициализация при загрузке страницы
+    // начальные значения
     const initVol = card.querySelector('.btn-volume.active') || volumeBtns[0];
     const initCol = card.querySelector('.btn-color.active') || colorBtns[0];
 
@@ -213,13 +271,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (initCol) {
       selectedColor = initCol.dataset.color;
     }
-    updateGallery(); // Применяем фильтрацию сразу после загрузки
+    updateGallery();
 
-    // Навигация по стрелкам
+    // стрелки галереи
     card.querySelector('.prev')?.addEventListener('click', () => showSlide(currentSlide - 1));
     card.querySelector('.next')?.addEventListener('click', () => showSlide(currentSlide + 1));
+
+    // свайпы для галереи
+    let touchStartXGallery = 0;
+    card.querySelector('.gallery-container').addEventListener('touchstart', e => touchStartXGallery = e.touches[0].clientX);
+    card.querySelector('.gallery-container').addEventListener('touchend', e => {
+      const deltaX = e.changedTouches[0].clientX - touchStartXGallery;
+      if (deltaX > 50) showSlide(currentSlide - 1);
+      if (deltaX < -50) showSlide(currentSlide + 1);
+    });
+
+    // клик по картинке → открыть модалку
+    galleryImgs.forEach((div, i) => {
+      div.querySelector('img').addEventListener('click', () => {
+        const filteredImages = getFilteredImages();
+        const index = filteredImages.indexOf(div);
+        if (index !== -1) {
+          const imagesArray = filteredImages.map(d => d.querySelector('img').src);
+          openModal(imagesArray, index);
+        }
+      });
+    });
   });
 });
+
 
 // логика кнопки "В избранное"
 function setupFavoriteButtons() {
@@ -336,185 +416,3 @@ function updateFavCount() {
   }
 updateFavCount();
 
-// переключение изображений и модальное окно
-document.addEventListener("DOMContentLoaded", function () {
-  const modal = document.getElementById("imgModal");
-  const modalImg = document.getElementById("modalImg");
-  const closeBtn = modal.querySelector(".close");
-  const prevBtn = modal.querySelector(".modal-prev");
-  const nextBtn = modal.querySelector(".modal-next");
-
-  let currentImages = [];
-  let currentIndex = 0;
-
-  function openModal(imagesArray, index, color) {
-    currentImages = imagesArray.filter(img => {
-      const imgElement = Array.from(document.querySelectorAll('.gallery-img img')).find(el => el.src.endsWith(img));
-      return imgElement?.getAttribute('img-color') === color;
-    });
-    if (currentImages.length === 0) {
-      alert(`Изображения для цвета "${color}" отсутствуют.`);
-      return;
-    }
-    currentIndex = index % currentImages.length;
-    modalImg.src = currentImages[currentIndex];
-    modal.style.display = "flex";
-    if (currentImages.length <= 1) {
-      prevBtn.style.display = 'none';
-      nextBtn.style.display = 'none';
-    } else {
-      prevBtn.style.display = window.innerWidth > 767 ? 'block' : 'none';
-      nextBtn.style.display = window.innerWidth > 767 ? 'block' : 'none';
-    }
-  }
-
-  function closeModal() {
-    modal.style.display = "none";
-    currentImages = [];
-    currentIndex = 0;
-  }
-
-  function showNext() {
-    if (currentImages.length === 0) return;
-    currentIndex = (currentIndex + 1) % currentImages.length;
-    modalImg.classList.remove('fade-in');
-    modalImg.src = currentImages[currentIndex];
-    requestAnimationFrame(() => modalImg.classList.add('fade-in'));
-  }
-
-  function showPrev() {
-    if (currentImages.length === 0) return;
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-    modalImg.classList.remove('fade-in');
-    modalImg.src = currentImages[currentIndex];
-    requestAnimationFrame(() => modalImg.classList.add('fade-in'));
-  }
-
-  // Свайпы для модального окна
-  let touchStartX = 0;
-  modal.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-  });
-  modal.addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const deltaX = touchEndX - touchStartX;
-    if (deltaX > 50) showPrev();
-    if (deltaX < -50) showNext();
-  });
-
-  closeBtn.addEventListener("click", closeModal);
-  nextBtn.addEventListener("click", showNext);
-  prevBtn.addEventListener("click", showPrev);
-
-  document.querySelectorAll('.product-card').forEach(card => {
-    let imgs;
-    try {
-      imgs = JSON.parse(card.dataset.img);
-    } catch (e) {
-      console.error(`Ошибка парсинга data-img для карточки с data-art="${card.dataset.art}":`, e);
-      return;
-    }
-    if (imgs.length === 0) {
-      console.warn(`Пустой массив изображений для карточки с data-art="${card.dataset.art}"`);
-      return;
-    }
-
-    let currentSlide = 0;
-    const galleryImgs = card.querySelectorAll('.gallery-img');
-    const dotsContainer = card.querySelector('.dots-container');
-    const prev = card.querySelector('.prev');
-    const next = card.querySelector('.next');
-
-    function getFilteredImages() {
-      return Array.from(galleryImgs).filter(div => div.classList.contains('color-match'));
-    }
-
-    function showSlide(index) {
-      const filteredImages = getFilteredImages();
-      if (filteredImages.length === 0) return;
-
-      if (index >= filteredImages.length) {
-        currentSlide = 0;
-      } else if (index < 0) {
-        currentSlide = filteredImages.length - 1;
-      } else {
-        currentSlide = index;
-      }
-
-      filteredImages.forEach((div, i) => {
-        div.classList.toggle('visible', i === currentSlide);
-      });
-
-      updateDots(filteredImages.length, currentSlide);
-    }
-
-    function updateDots(count, activeIndex) {
-      if (!dotsContainer) return;
-      dotsContainer.innerHTML = '';
-      for (let i = 0; i < count; i++) {
-        const dot = document.createElement('span');
-        dot.className = 'dot' + (i === activeIndex ? ' active' : '');
-        dot.addEventListener('click', () => showSlide(i));
-        dotsContainer.appendChild(dot);
-      }
-    }
-
-    // Инициализация слайда
-    const initialColor = card.querySelector('.btn-color.active')?.dataset.color;
-    card.querySelectorAll('.btn-color').forEach(btn => {
-      btn.addEventListener('click', () => {
-        card.querySelectorAll('.btn-color').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        updateGallery(btn.dataset.color);
-      });
-    });
-
-    function updateGallery(selectedColor) {
-      galleryImgs.forEach((imgDiv) => {
-        const img = imgDiv.querySelector('img');
-        const isMatch = img?.getAttribute('img-color') === selectedColor;
-        imgDiv.classList.toggle('color-match', isMatch);
-        imgDiv.classList.remove('visible');
-      });
-      currentSlide = 0;
-      showSlide(currentSlide);
-    }
-
-    updateGallery(initialColor);
-    showSlide(currentSlide);
-
-    // Обработчики для стрелок
-    if (prev && imgs.length > 1) {
-      prev.addEventListener('click', () => {
-        showSlide(currentSlide - 1);
-      });
-    }
-
-    if (next && imgs.length > 1) {
-      next.addEventListener('click', () => {
-        showSlide(currentSlide + 1);
-      });
-    }
-
-    // Свайпы для галереи
-    let touchStartXGallery = 0;
-    card.querySelector('.gallery-container').addEventListener('touchstart', (e) => {
-      touchStartXGallery = e.touches[0].clientX;
-    });
-    card.querySelector('.gallery-container').addEventListener('touchend', (e) => {
-      const touchEndX = e.changedTouches[0].clientX;
-      const deltaX = touchEndX - touchStartXGallery;
-      if (deltaX > 50) showSlide(currentSlide - 1);
-      if (deltaX < -50) showSlide(currentSlide + 1);
-    });
-
-    // Открытие модального окна
-    card.querySelectorAll('.gallery-img img').forEach((img, i) => {
-      img.addEventListener('click', () => {
-        const selectedColor = card.querySelector('.btn-color.active')?.dataset.color;
-        const filteredIndex = getFilteredImages().findIndex(div => div.querySelector('img').src === img.src);
-        openModal(imgs, filteredIndex, selectedColor);
-      });
-    });
-  });
-});
