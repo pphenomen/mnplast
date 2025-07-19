@@ -306,6 +306,9 @@ function setupFavoriteButtons() {
 
   document.querySelectorAll('.btn-fav').forEach(btn => {
     const card = btn.closest('.product-card');
+    const hasVolume = !!card.querySelector('.btn-volume');
+    const hasColor = !!card.querySelector('.btn-color');
+
     if (!card) return;
 
     const title = card.dataset.title;
@@ -317,26 +320,22 @@ function setupFavoriteButtons() {
     function getSelectedData() {
       const selectedVolume = card.querySelector('.btn-volume.active');
       const selectedColor = card.querySelector('.btn-color.active');
-      if (!selectedVolume || !selectedColor) return null;
+      if ((hasVolume && !selectedVolume) || (hasColor && !selectedColor)) return null;
       return {
-        art: selectedVolume.dataset.art,
-        color: selectedColor.dataset.color,
-        pack: parseFloat(selectedVolume.dataset.pack?.replace(',', '.') || '0'),
-        price: parseFloat(selectedVolume.dataset.price?.replace(',', '.') || '0'),
-        volume: selectedVolume.dataset.volume
+        art: selectedVolume?.dataset.art || card.dataset.art || '',
+        color: selectedColor?.dataset.color || card.dataset.color || '',
+        pack: parseFloat(selectedVolume?.dataset.pack?.replace(',', '.') || card.dataset.pack || '0'),
+        price: parseFloat(selectedVolume?.dataset.price?.replace(',', '.') || card.dataset.price || '0'),
+        volume: selectedVolume?.dataset.volume || card.dataset.volume || ''
       };
     }
 
-    function getMatchedImages(color, art) {
+    function getMatchedImages(color) {
       const imageDivs = card.querySelectorAll('.gallery-img');
       return Array.from(imageDivs)
-        .filter(div => {
-          const img = div.querySelector('img');
-          const matchColor = img?.getAttribute('img-color') === color;
-          const matchArt = div.dataset.art === art;
-          return matchColor && matchArt;
-        })
-        .map(div => div.querySelector('img')?.src)
+        .map(div => div.querySelector('img'))
+        .filter(img => img?.getAttribute('img-color') === color)
+        .map(img => img?.src)
         .filter(src => src);
     }
 
@@ -368,15 +367,20 @@ function setupFavoriteButtons() {
     }
 
     updateFavButton();
-
+    
     btn.addEventListener('click', () => {
       const data = getSelectedData();
       if (!data) {
-        alert('Пожалуйста, выберите объем и цвет товара.');
+        const message =
+          hasVolume && hasColor ? 'Пожалуйста, выберите объем и цвет товара.' :
+          hasVolume ? 'Пожалуйста, выберите объем товара.' :
+          hasColor ? 'Пожалуйста, выберите цвет товара.' :
+          'Данные товара недоступны.';
+        alert(message);
         return;
       }
 
-      const matchedImages = getMatchedImages(data.color, data.art);
+      const matchedImages = getMatchedImages(data.color);
       if (!matchedImages.length) {
         alert(`Изображения для цвета "${data.color}" отсутствуют.`);
         return;
